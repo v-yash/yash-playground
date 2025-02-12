@@ -1,16 +1,19 @@
-name: Build and Push Docker Image to Docker Hub
+name: Build, Push Docker Image to Docker Hub and AWS ECR
 on:
   pull_request:
     branches:
+      - dev
       - main
   push:
     branches:
+      - dev
       - main
 jobs:
-  build_and_push_to_registry:
-    name: Build And Push to Docker Hub
+  docker_build:
+    name: Build Docker Image and Push to Docker Hub
     runs-on: ubuntu-latest
-    permissions: {}
+    permissions:
+      contents: write
     steps:
       - name: Check out the repository
         uses: actions/checkout@v3
