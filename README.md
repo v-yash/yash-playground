@@ -2,8 +2,6 @@
 
 Welcome to my **Personal Learning Repository**! 🚀 This repo serves as a collection of my notes, projects, experiments, and code snippets as I explore various technologies, concepts, and tools.
 
-## 📌 Repository Structure
-. ├── notes/ # Theory, concepts, and important references ├── projects/ # Mini-projects and hands-on implementations ├── scripts/ # Useful scripts for automation and experimentation ├── resources/ # Links to articles, books, and tutorials
 
 ## 🔥 Topics I'm Exploring
 
