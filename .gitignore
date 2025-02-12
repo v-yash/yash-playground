@@ -1,0 +1,57 @@
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore Python-related files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+Pipfile.lock
+poetry.lock
+
+# Ignore Terraform files
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+
+# Ignore AWS CDK build artifacts
+cdk.out/
+
+# Ignore Ansible-related files
+*.retry
+
+# Ignore Docker-related files
+docker/*.log
+docker/tmp/
+
+# Ignore Kubernetes-related files
+*.kubeconfig
+kubernetes/*.log
+
+# Ignore GitHub Actions runner files
+.github/workflows/*.log
+
+# Ignore temporary files
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Ignore logs and debug files
+logs/
+*.log
+debug.log
+
+# Ignore archives and compressed files
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# Ignore credentials or secrets (if any)
+.env
+.secrets
