@@ -24,25 +24,21 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Get short SHA
+      - name: Get short SHA and branch name
         id: slug
-        run: echo ::set-output name=sha7::$(echo ${{ github.sha }} | cut -c1-7)
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v1
-        with:
-          images: docker.io/starkyv/devops-learning
-          tags: ${{ steps.slug.outputs.sha7 }}-${{ github.ref_name }}
-      - name: Storing short SHA
-        id: store_sha
-        run: echo Image_Tag= '${{ steps.slug.outputs.sha7 }}-${{ github.ref_name }}' >>$GITHUB_ENV
+        run: |
+          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+          BRANCH_NAME=$(echo "${{ github.ref_name }}" | sed 's/[^a-zA-Z0-9-]//g')
+          IMAGE_TAG="$BRANCH_NAME-$SHORT_SHA-devops-learning"
+          echo "SHORT_SHA=$SHORT_SHA" >> $GITHUB_ENV
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+          echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
       - name: Checking Critical Values
-        id: check
-        run: "echo New_Image_Tag: ${{ env.Image_Tag }}"
+        run: "echo New Image Tag: ${{ env.IMAGE_TAG }}"
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
           context: .
           push: "true"
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: docker.io/starkyv/devops-learning:${{ env.IMAGE_TAG }}
+          labels: latest
