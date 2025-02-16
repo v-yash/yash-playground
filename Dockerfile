@@ -1,7 +1,5 @@
-# Use an official lightweight Python image as the base
 FROM python:3.11-slim
 
-# Set the working directory inside the container
 WORKDIR /workspace
 
 # Install common dependencies for DevOps tasks
@@ -19,16 +17,21 @@ RUN apt-get update && apt-get install -y \
     sudo \
     && rm -rf /var/lib/apt/lists/*
 
+RUN pip install flask
+
 # Install Docker CLI (optional, but useful for debugging)
-RUN curl -fsSL https://get.docker.com | sh
+# RUN curl -fsSL https://get.docker.com | sh
 
 # Install Kubernetes CLI (kubectl)
-RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
-    && chmod +x kubectl \
-    && mv kubectl /usr/local/bin/
+# RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
+#     && chmod +x kubectl \
+#     && mv kubectl /usr/local/bin/
 
 # Copy the entire repository into the container
 COPY . .
 
-# Expose a shell as an entry point
-CMD ["/bin/bash"]
+# Expose port 5000 for Flask
+EXPOSE 5000
+
+# Run the web app
+CMD ["python", "webapp/app.py"]

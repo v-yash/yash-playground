@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DevOps Learning Repo</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        a { text-decoration: none; color: blue; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h2>Repository Browser</h2>
+    <p>Current Path: /{{ path }}</p>
+    <ul>
+        {% if path %}
+        <li><a href="{{ request.path.rsplit('/', 1)[0] }}">⬅️ Back</a></li>
+        {% endif %}
+        {% for item in items %}
+        <li>
+            <a href="{{ request.path }}/{{ item }}">{{ "📂" if '.' not in item else "📄" }} {{ item }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

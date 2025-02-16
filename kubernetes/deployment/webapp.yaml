@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-webapp
+  template:
+    metadata:
+      labels:
+        app: devops-webapp
+    spec:
+      containers:
+        - name: webapp
+          image: starkyv/devops-learning:main-ecbf870-devops-learning
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              cpu: "250m"   # 0.25 CPU cores (~12.5% of a core)
+              memory: "256Mi" # 256MB of RAM
+            limits:
+              cpu: "500m"   # 0.5 CPU cores (~25% of a core)
+              memory: "512Mi" # 512MB of RAM
+      imagePullSecrets:
+      - name: pvt-docker-creds
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: devops-webapp-service
+spec:
+  selector:
+    app: devops-webapp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: NodePort
