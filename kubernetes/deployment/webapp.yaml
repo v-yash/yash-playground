@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: webapp
-          image: starkyv/devops-learning:main-ecbf870-devops-learning
+          image: starkyv/devops-learning:latest
           ports:
             - containerPort: 5000
           resources:

@@ -40,5 +40,6 @@ jobs:
         with:
           context: .
           push: "true"
-          tags: docker.io/starkyv/devops-learning:${{ env.IMAGE_TAG }}
-          labels: latest
+          tags: |
+            docker.io/starkyv/devops-learning:${{ env.IMAGE_TAG }}
+            docker.io/starkyv/devops-learning:latest
