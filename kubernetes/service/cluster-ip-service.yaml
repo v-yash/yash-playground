@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app.kubernetes.io/name: MyApp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
+
+# Type: Defaults to ClusterIP (since type is not specified).
+# Purpose: Routes traffic within the cluster to pods labeled app.kubernetes.io/name: MyApp.
+# Selector: Maps to Kubernetes pods with label app.kubernetes.io/name: MyApp.
+# TargetPort: Requests to my-service on port 80 get forwarded to the pods on port 9376.
+# Use case: Typically used for internal communication between services within the cluster.

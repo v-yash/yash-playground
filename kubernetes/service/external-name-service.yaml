@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-writer
+spec:
+  externalName: aws-rds-cluster-endpoint
+  sessionAffinity: None
+  type: ExternalName
+
+# can be used to create service to point "db-writer" to the AWS RDS cluster through which application running 
+# inside cluster can connect to the RDS host using host as "db-writer"

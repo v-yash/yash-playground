@@ -1,0 +1,222 @@
+terraform provider blocks                         			
+terraform external id changes                     			
+facets DB migration job changes                   			
+mongo snaphots to delete from staging account.    			
+mongo voulmes to delete from staging account.     			
+enchanced monitoring on staging cluster 11 and analyse then graph   
+changing the scripts which are using admin assume role    	
+Need to debug why cluster scaling down message was not triggered, logs showing access denied while ausing but able to access when trying to resume the rds   (renamed the user name of cron from "Time By Devops" to "Devops")
+Need to test prod facets db migration job					
+frequency of AR module alerts on shared-infra???			dev's looking into it
+Need to disable crs reader performance insight				
+Apply query timeout parameter on staging crs to 10mins		
+Apply query timeout parameter on prod crs to 60mins			
+move cluster scaling notifcation from superhero-general to devops-external		
+logs restore for crs-reports for oct month					
+iam billing access to facets(2 users)						
+rackrate treebo data to staging 11 rms db 					
+slow query logs to RMS RDS									
+slow query logs jobs to be ranamed							
+need to configure statement timeout parameter in root account prod RDS						
+need to create alert for crs-reports queue													not required now
+snorqube reports plugin 																	
+payment,refund,koopan in services ko restart karna hai after your staging restart jobs		
+slowquery log on root account web-master RDS												
+slowquery should be enabled for hawkeye DB, yesterday also migration was stuck				not required right now
+sonarqube master branch failed flag															
+acm codebuild job not updating on everywhere (pypi)											PR raised, under review
+r&d for slowquery logs alert message														, sending it new format now (```<query>```), will try to send a file or a doc link method
+take a look on common serivces resources present on all the accounts (mumbai and singa)		
+tenant gateway DB dump														
+list of ec2 not running on a type series 					
+pause stag redshift similarly to cluster down			
+instance refresh on staging														
+RMS shovels backup														    
+scale down staging facets direct env							
+instance refresh on prod 												  
+prod volumes encryption 												  
+wetty to be disabled on staging										
+vendor portal machine scale down									
+s3 buckets size															      
+ec2 scaling notification												  
+kinesis, firehouse to be deleted on prod root accounts					
+beyond corp volumes and ec2												
+whether old logs on prod are getting removed			
+check ebs volumes on prod accounts								
+cluster scaling json on direct staging 						
+fluenty application configuration using 250GB			
+staging volumes to move from gp2 to gp3						
+cloudwatch alarms via terrform on prod accounts		
+otp service to move on facets direct							
+pypi movement into k8's env												
+alarm for active running pods count changes				
+code-artifact implementation											
+aurora-io optimized implementation								
+direct services-facets facets changes							
+hs services pypi changes												  
+direct services pypi changes											
+scale down                                        
+scrut access keys                       
+press9 build pipeline                   
+need to sync ingress whitelisting changes         facets team doing
+need to find where conman keys is getting used     
+https://docs.github.com/en/actions/learn-github-actions/finding-and-customizing-actions#referencing-a-container-on-docker-hub
+GRANT USAGE, SELECT ON SEQUENCE awsdms_ddl_audit_c_key_seq TO 
+GRANT SELECT, DELETE, INSERT ON TABLE public.awsdms_ddl_audit TO hasura_role;
+mysql press9 print data count before deleting 
+press 9 DB current size and wher to take the backup
+press9 prod db migrated to smaller RDS: test it once for the timing
+press9 staging ec2 stop & rds stop script: 
+aws issued certs into pem files: no https://docs.aws.amazon.com/acm/latest/userguide/sdk-export.html
+blog machine log rotation: checked the rotation, wokring fine
+need to delete old prod db of press 9
+blog disk warning alert remove
+m6g.large.search  2 8 opensearch for prod
+opensearch scale down option
+nginx routing config
+alb deleteion protection override testing
+pypi changes merge
+ACM job check
+why tenant pis got enabled in staging again
+metabase got 0 pods during rolling restart
+queue mssg alert at 5k
+RMQ_CONSUMERS_ALERT_INTERFACE_EXCHANGE_QUEUES_TEN100 remove
+Autoscaling alerts
+kube_horizontalpodautoscaler_status_target_metric
+kube_horizontalpodautoscaler_status_target_metric
+Active pod count change alerts (in disabled state for now, can be changed such that it gives alert when running pod reduced to 0)
+kube_deployment_status_replicas_available
+RMQ release alerts
+rabbitmq_queue_messages_unacknowledged (configured on queue basis)
+rabbitmq_queue_consumers (some alerts have queue and bhost specific filters)
+rabbitmq_queue_messages (total messages)
+rabbitmq_node_mem_used / rabbitmq_node_mem_limit * 100 > 60
+Redis (in disabled state for now)
+redis_db_keys
+Non-ready pods alert
+kube_deployment_status_replicas_unavailable
+
+1.Cleanup of S3 buckets
+2.Kept unused s3 data + old database entries in glacier
+3.Reserved :- Elastic cache/RDS/Redshift
+4.Staging is getting stopped on weekend and everynight and can be started at any point of time
+5.Aurora moved to IO-optimized
+6.Reduced the EBS volume of RDS/EC2
+7.Periodic cleanup of RDS/EC2
+8.Bought Saving plan (Previously we were reserving the instance types)
+9.Changed the instance types from m series to C series (it reduced the EC2 instances by a good number)
+10.Staging is running on spot
+11.Staging machines are of t3 series (burstable)
+12.Periodic clean up of unused EIPs
+13.Using mumbai region for staging+prod (As its cheaper as compare to others)
+14.Using Api gateway/Lambda for non-computing services likes OTP rather than fix EC2
+15.Using kubernetes using Facets and because of this now the scaling is happening over services not over EC2 instances
+16.Using ALB rather than using ELB
+17.Using multi tenant Architecture so that same app server and database can be used for different tenants 18.Using General Purpose SSD for databases rather than Provisioned
+19.Only taking snapshots of prod database for 7 days
+20.Moved EC2 machines and Databases to Graviton series 
+
+Deleted unnecessary secret manager entries
+Although now we have disabled that cron, but we used spin up large machine between specific date every month and then again reduce that ec2 size
+pypi moved to single machine (removed pypi.treebo.pr)
+kinesis, firehouse deleted from prod account
+removed log retention application in staging (in staging only current pod logs can be retrieved, not storing older logs)
+multiple unwanted  snapshots deleted
+ALTER ROLE "tenant-ten100-KjrW" SET search_path = ten100_schema;
+
+need to understadn from siddharth, how we handled the let's encrypt certs manual updation in haproaxy machine
+
+ArgoCD:
+https://argo-cd.readthedocs.io/en/stable/
+https://www.youtube.com/watch?v=MeU5_k9ssrs
+
+netfliter api
+nftables
+
+apt-update: get list of all the packages (usaully used for new machine)
+
+tar cvzf dump.tar.gz mongo-dump.bson/
+tar -xvzf dump.tar.gz
+
+docker run -it -v $PWD/dump:/xyz docker.io/bitnami/mongodb:6.0.2 bash
+
+RMQ data points values
+advik PR review 
+cronjob alerting
+redis version bump error on facets env
+git module 
+docker x
+
+all the workers should be have annotation 
+{
+  "podEvictionAnnotation": { 
+         "enablePodEviction": true 
+   }
+}
+and all the application which are having only 1 replica should have 
+{
+  "podEvictionAnnotation": { 
+         "enablePodEviction": false 
+   }
+}
+
+for finance-erp app server, finance-erp.treebo.com we need to remove this configured endpoint and configured it for treebo finance-erp admin
+
+https://admin.treebo.com/erp/admin should point to treebo admin only
+
+proxy set headers
+
+1. installation of grafana itself, alerts config in git
+2. reliable installation of grafana, restart of grafan shouldn't break anything
+
+yash.verma@Yash kubenetes-learning % helm install my-grafana grafana/grafana --namespace monitoring
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /Users/yash.verma/.kube/config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /Users/yash.verma/.kube/config
+NAME: my-grafana
+LAST DEPLOYED: Mon Jun 17 13:24:30 2024
+NAMESPACE: monitoring
+STATUS: deployed
+REVISION: 1
+NOTES:
+1. Get your 'admin' user password by running:
+
+   kubectl get secret --namespace monitoring my-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+
+
+2. The Grafana server can be accessed via port 80 on the following DNS name from within your cluster:
+
+   my-grafana.monitoring.svc.cluster.local
+
+   Get the Grafana URL to visit by running these commands in the same shell:
+     export POD_NAME=$(kubectl get pods --namespace monitoring -l "app.kubernetes.io/name=grafana,app.kubernetes.io/instance=my-grafana" -o jsonpath="{.items[0].metadata.name}")
+     kubectl --namespace monitoring port-forward $POD_NAME 3000
+
+3. Login with the password from step 1 and the username: admin
+#################################################################################
+######   WARNING: Persistence is disabled!!! You will lose your data when   #####
+######            the Grafana pod is terminated.                            #####
+#################################################################################
+
+
+docker run -it -v $PWD/dump:/xyz/dump docker.io/bitnami/mongodb:6.0.2 bash
+
+mongodump --authenticationDatabase=admin --uri mongodb://user:pwd@host:27017/reseller?authSource=admin
+
+mongorestore --uri 'mongodb://user:pwd@host:27017/reseller_treebo?authSource=admin' --drop --verbose=2 dump/reseller/
+
+promql rule for pod and cronjob failure 
+need to take update on mongo snapshot flow from facets
+superhero prod account snapshots and vloumes 
+mongo reseller size further reduce (prod and stage)
+
+
+RUNNER_TOOL_CACHE
+
+
+poetry on hawkeye or the repos the repos which is using poetry.lock
+
+
+kubectl get deployments,statefulsets -n default -o custom-columns="NAMESPACE:.metadata.namespace,APP:.metadata.name,CPU_REQUEST:.spec.template.spec.containers[*].resources.requests.cpu,MEMORY_REQUEST:.spec.template.spec.containers[*].resources.requests.memory,CPU_LIMIT:.spec.template.spec.containers[*].resources.limits.cpu,MEMORY_LIMIT:.spec.template.spec.containers[*].resources.limits.memory"
+
+
+kubectl get deployments,statefulsets -n default -o custom-columns="NAMESPACE:.metadata.namespace,APP:.metadata.name,CPU_REQUEST:.spec.template.spec.containers[*].resources.requests.cpu,MEMORY_REQUEST:.spec.template.spec.containers[*].resources.requests.memory,CPU_LIMIT:.spec.template.spec.containers[*].resources.limits.cpu,MEMORY_LIMIT:.spec.template.spec.containers[*].resources.limits.memory" | sort -k2 | awk '{print $2}'

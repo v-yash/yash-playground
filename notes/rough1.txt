@@ -1,0 +1,209 @@
+pods
+deploy
+rs
+k8s
+api-server
+master + worker
+n master
+n worker
+1. creating and running containers
+images use to create containers
+pod - container - logic execute
+kubec
+kubectl run my-pod --image=python3:10
+/api/v1/pods
+/api/v1/ingress
+nginx
+/api/v1/ingress - creation of new ingress -> adding of a new route to the nginx
+replicaset
+crs-app - image + startup + health check + cpu mem
+rs a. image + startup + health check + cpu mem
+rs b. newimage + startup + health check + cpu mem
+crs-app = replica - 2 3 4
+rs -> no. of replicas +  image + startup + health check + cpu mem
+n pods
+identical
+deployment api
+deploy rs pods
+ingress
+we creatre rs -> rs ctreated pods for us
+deployment resource -> api server to cretae  - xyz 
+---
+no. of replicas +  image + startup + health check + cpu mem
+
+rs- xyz-rs-1 no. of replicas +  image + startup + health check + cpu mem
+
+deploy -> image -> newimage
+ xyz-rs-2 -> no. of replicas +  newimage + startup + health check + cpu mem
+---
+crs - deploy - 2 replicas
+image
+rs 1
+put req. to existing deploy res. for crs-app .. update image... newimage
+
+rs1 2 pods 
+rs2 ---
+rs2 - 2 replicas
+
+helm cdk8s flux
+
+1. api server
+2. declarative tool
+deploy crs-app 2 replicas
+3. worker
+a. b c
+1 replica running another crashed
+1. deploy - tax-app 
+if was already - update
+not already there - create 
+post call - api/v1/deploy tax-app
+https://github.com/stefanprodan/podinfo
+deploy service hpa
+kubectl apply -f ./foler/ -f a.yml -f b.yml
+helm install
+helm is a templating toool
+ask helm to genr8 k8s yml for us
+as khelm to henr8 and install ( apply the yaml filenon cluster )
+cdk8s
+python -to genr 8 yaml
+cdk8s. synth
+we do not want to create pour pown helm chart
+but we want to utilize the helm charts that 3rd party providers have build for ud
+helm install a lot
+helm .kube/config
+helm install local lcaptyio ---
+software flux
+1. flux runs in a k8s cluster
+2. flux can do helm install for us
+install flux manually by myself on cluster kjust once
+utlize flux to auto manage all ther pther installation
+istio rabitmq nginx ( helm install | kubecyl apploy -f istio.yaml )
+flux cd tools
+git pull aproach
+1. rabbit mq cluster operator
+2. rabbit mq cluster - 1
+3. topology operator
+4. vhost res -> cluster-1
+kubectl get vhpost
+åws/constructs  - https://constructs.dev/
+cdk8s awscdk projen
+cdk8s - py code to gener8 k8s yml
+awscdk - py cdeo to ger8 cfn yml
+job cronjob
+ingress
+
+
+serviceaccount role clusterroles
+RBAC
+rolebinding
+storage - storageclass pv pvc
+configmap
+secret
+network - networkpolicy
+service - cluster loabalancer
+ingress - ingres.classs ingress.controller
+zolando
+crossplane
+
+
+REST API
+CRUD
+HTTP METHODS
+authentication & atuhorization (their relation and communication)
+http 401
+API
+k8s - sa role cr rb crb
+aws iam - role user policy
+
+
+direct -> pipeline -> pipeline id
+1. jobid - build job id -> 154 :tag image
+docker.treebo.com
+docker image artifact
+pypi.tree.bo
+env specific
+---
+HS
+AWS ECR
+tagging -> :{CLS-id}-{branch}-{commitid}
+1. we want to maintain versions
+pr merge ->
+1. commit analyze
+2. next version calc
+3. build - docker build
+4. test
+5. version update -> files changes 
+changelog.md
+6. git commit
+7. git push
+8. git push will not trigger a new action
+9. docker build . | rebuild | retag ->
+cmt A  -> cmt B (push ) ( version attach)
+1.2.3 -> 1.3.0
+10. docker push
+
+
+1. deployment statefulsets daemonset cronjob job  pdb 
+pv pvc sc ( reclaim policy ) 
+cm secret 
+service (clusterip nodeport) , ingress ( ingress controller )
+RBAC -> (IAM) ( serviceaccount, role, clusterroles ) ( networkpolicy )
+
+2. Understand multi-container Pod design patterns (e.g. sidecar, init and others)
+
+( istio -> envoy proxy  || dapr )p
+
+
+3. https://github.com/ContainerSolutions/k8s-deployment-strategies
+
+4. `Kustomize` `helm` `kubectl apply -f` `cdk8s` 
+5. API deprecations ( api res. struct -> apiVersion kind metadata spec status
+6. Use built-in CLI tools to monitor Kubernetes applications
+Utilize container logs
+Debugging in Kubernetes
+
+kubectl get events 
+kubectl logs
+
+
+7. crd && operator 
+
+https://github.com/rabbitmq/messaging-topology-operator 
+https://aws-controllers-k8s.github.io/community/
+kubectl get vhost,shovel 
+kubectl get iamroles,vpc,subnets,ekscluyter
+
+8. reconciliation authentication, authorization and admission control
+ServiceAccounts
+
+9. SecurityContexts, Capabilities,
+
+
+Name
+Type
+Features	
+State
+Ready
+Unacked
+Total
+incoming
+deliver / get
+ack
+tenant-gateway_treebo	
+crs-inventory-event-queue-booking_engine
+
+
+
+terraform state rm 'module.level2.module.postgres_wrapper.module.postgres_aurora["dp"].module.pg_creds["airflow"].postgresql_role.app_role'
+
+terraform state rm 'module.level2.module.postgres_wrapper.module.postgres_aurora["dp"].module.pg_creds["ro-db"].postgresql_role.app_role'
+
+terraform state rm 'module.level2.module.postgres_wrapper.module.postgres_aurora["dp"].module.pg_creds["cluster"].postgresql_role.app_role'
+
+terraform state rm 'module.level2.module.postgres_wrapper.module.postgres_aurora["dp"].module.pg_creds["metabase"].postgresql_role.app_role'
+
+terraform state rm 'module.level2.module.postgres_wrapper.module.postgres_aurora["dp"].module.pg_creds["metabase-sast"].postgresql_role.app_role'
+
+terraform state rm 'module.level2.module.postgres_wrapper.module.postgres_aurora["dp"].module.pg_creds["metabase-temp"].postgresql_role.app_role'
+
+terraform state rm 'module.level2.module.postgres_wrapper.module.postgres_aurora["dp"].module.pg_creds["pentaho"].postgresql_role.app_role'
