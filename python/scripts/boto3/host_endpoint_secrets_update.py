@@ -11,12 +11,12 @@ AWS_REGION = "ap-southeast-1"
 # Mapping of old to new RDS endpoints
 RDS_ENDPOINT_MAPPING = {
     "crs-writer": {
-        "old": "s-7587-apse1-11-crs.cluster-csrz345axgli.ap-southeast-1.rds.amazonaws.com",
-        "new": "scyy2ka5m9-crs-staging-writer.csrz345axgli.ap-southeast-1.rds.amazonaws.com"
+        "old": "old host",
+        "new": "new host"
     },
     "rms-writer": {
-        "old": "s-7587-apse1-11-rms.cluster-csrz345axgli.ap-southeast-1.rds.amazonaws.com",
-        "new": "scyy2ka5m9-rms-staging-writer.csrz345axgli.ap-southeast-1.rds.amazonaws.com"
+        "old": "old host",
+        "new": "new host"
     }
 }
 
