@@ -179,31 +179,19 @@ ServiceAccounts
 9. SecurityContexts, Capabilities,
 
 
-Name
-Type
-Features	
-State
-Ready
-Unacked
-Total
-incoming
-deliver / get
-ack
-tenant-gateway_treebo	
-crs-inventory-event-queue-booking_engine
+https://github.com/treebo-noss/treebo/pull/1064
+https://github.com/treebo-noss/competition_data_service/pull/1
+https://github.com/treebo-noss/treebo-common/pull/27
+https://github.com/treebo-noss/epos/pull/1
+vendor portal -> poetry (needs to be done by dev)
+https://github.com/treebo-noss/pricing_orchestrator
 
 
 
-terraform state rm 'module.level2.module.postgres_wrapper.module.postgres_aurora["dp"].module.pg_creds["airflow"].postgresql_role.app_role'
 
-terraform state rm 'module.level2.module.postgres_wrapper.module.postgres_aurora["dp"].module.pg_creds["ro-db"].postgresql_role.app_role'
+- instead of using default vhost , explicit ref. shared subdomain in staging 
+and demo nginx config of corp and trb backend
 
-terraform state rm 'module.level2.module.postgres_wrapper.module.postgres_aurora["dp"].module.pg_creds["cluster"].postgresql_role.app_role'
 
-terraform state rm 'module.level2.module.postgres_wrapper.module.postgres_aurora["dp"].module.pg_creds["metabase"].postgresql_role.app_role'
-
-terraform state rm 'module.level2.module.postgres_wrapper.module.postgres_aurora["dp"].module.pg_creds["metabase-sast"].postgresql_role.app_role'
-
-terraform state rm 'module.level2.module.postgres_wrapper.module.postgres_aurora["dp"].module.pg_creds["metabase-temp"].postgresql_role.app_role'
-
-terraform state rm 'module.level2.module.postgres_wrapper.module.postgres_aurora["dp"].module.pg_creds["pentaho"].postgresql_role.app_role'
+"rms_admin
+}fP97xcNP2^P]*XM"
