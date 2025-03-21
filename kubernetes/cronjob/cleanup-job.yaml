@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: cleanup-job
+spec:
+  schedule: "0 0 * * *"  # Runs daily at midnight
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: cleanup
+            image: busybox
+            command: ["sh", "-c", "rm -rf /tmp/*"]
+          restartPolicy: OnFailure
