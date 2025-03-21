@@ -1,15 +1,16 @@
 import psycopg2
 import json
 
-RDS_HOST = "host"
-DB_USER = "user"
-DB_PASSWORD = "host"
-DATABASES = [
-    "ar-module", "auth", "authz", "company-profiles", "crs",
-    "finance-erp", "material-manager", "ups"
-]
-db_list=["catalog", "growth-realization", "hawkeye","interface-exchange", 
-            "rackrate", "staff-management", "taxation"]
+RDS_HOST = "scyy2ka5m9-crs-staging-writer.csrz345axgli.ap-southeast-1.rds.amazonaws.com"
+DB_USER = "root"
+DB_PASSWORD = "skzEP6UTskaNwoP7hsUG"
+DATABASES = ["finance-erp"]
+# DATABASES = [
+#     "ar-module", "auth", "authz", "company-profiles", "crs",
+#     "finance-erp", "material-manager", "ups"
+# ]
+# db_list=["catalog", "growth-realization", "hawkeye","interface-exchange", 
+#             "rackrate", "staff-management", "taxation"]
             
 SCHEMA_NAME = "ten100_schema"
 
