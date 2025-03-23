@@ -30,6 +30,8 @@ RUN pip install flask
 # Copy the entire repository into the container
 COPY . .
 
+RUN pip install -r requirements.txt
+
 # Expose port 5000 for Flask
 EXPOSE 5000
 
