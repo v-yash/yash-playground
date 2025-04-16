@@ -32,5 +32,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# python3 folder-diff-checker.py path1 path2

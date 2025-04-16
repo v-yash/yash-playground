@@ -1,9 +1,9 @@
 import os
 
 # Configuration
-dump_directory = "/home/yash.verma/dumps/treebo_staging"
-old_string = b"old string"
-new_string = b"new string"
+dump_directory = "/home/yash.verma/dumps/"
+old_string = b"schema1"
+new_string = b"schema2"
 
 def replace_in_file(file_path, old, new):
     """Replace occurrences of a string in a binary file."""

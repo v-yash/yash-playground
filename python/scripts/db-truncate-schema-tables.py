@@ -1,18 +1,13 @@
 import psycopg2
 import json
 
-RDS_HOST = "scyy2ka5m9-crs-staging-writer.csrz345axgli.ap-southeast-1.rds.amazonaws.com"
-DB_USER = "root"
-DB_PASSWORD = "skzEP6UTskaNwoP7hsUG"
-DATABASES = ["finance-erp"]
-# DATABASES = [
-#     "ar-module", "auth", "authz", "company-profiles", "crs",
-#     "finance-erp", "material-manager", "ups"
-# ]
-# db_list=["catalog", "growth-realization", "hawkeye","interface-exchange", 
-#             "rackrate", "staff-management", "taxation"]
-            
-SCHEMA_NAME = "ten100_schema"
+RDS_HOST = ""
+DB_USER = ""
+DB_PASSWORD = ""
+
+DATABASES = ["db1", "db2"]
+
+SCHEMA_NAME = "schema"
 
 # Function to truncate all tables in the schema
 def truncate_schema(db_name):

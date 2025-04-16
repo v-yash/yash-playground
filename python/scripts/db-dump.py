@@ -4,18 +4,15 @@ import json
 from datetime import datetime
 
 # Configuration
-SOURCE_HOST = "host"
-SOURCE_DB_USER = "user"
-SOURCE_DB_PASSWORD = "pwd"
-DATABASES = ["ar-module", "auth", "authz", "company-profiles", "crs",
-                "finance-erp", "material-manager", "ups"]
+SOURCE_HOST = ""
+SOURCE_DB_USER = ""
+SOURCE_DB_PASSWORD = ""
 
-db_list=["catalog", "growth-realization", "hawkeye","interface-exchange", 
-            "rackrate", "staff-management", "taxation"]
+DATABASES=["db1", "db2"]
 
 SCHEMA_NAME = "treebo_schema" 
-DUMP_DIR = "/home/yash.verma/dumps/treebo_staging"
-LOG_FILE = "/home/yash.verma/treebo_dump_logs"
+DUMP_DIR = "/home/yash.verma/dumps/treebo_prod"
+LOG_FILE = "/home/yash.verma/treebo_prod_dump_logs"
 
 def load_migration_log():
     """Load migration status log."""

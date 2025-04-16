@@ -3,21 +3,16 @@ import subprocess
 import json
 from datetime import datetime
 
-TARGET_HOST = "host"
-TARGET_DB_USER = "user"
-TARGET_DB_PASSWORD = "pwd"
+TARGET_HOST = ""
+TARGET_DB_USER = ""
+TARGET_DB_PASSWORD = ""
 
-DUMP_DIR = "/home/yash.verma/dumps/treebo_staging"
-LOG_FILE = "/home/yash.verma/restore_logs.json"
+DUMP_DIR = "/home/yash.verma/dumps/"
+LOG_FILE = "/home/yash.verma/logs.json"
 
-DATABASES = [
-    "ar-module", "auth", "authz", "company-profiles", "crs",
-    "finance-erp", "material-manager", "ups"
-]
-db_list=["catalog", "growth-realization", "hawkeye","interface-exchange", 
-            "rackrate", "staff-management", "taxation"]
+DATABASES = ["db1", "db2"]
 
-SCHEMA_NAME = "ten100_schema"  # Schema name to restore
+SCHEMA_NAME = "schema" 
 
 def load_restore_log():
     """Load restore status log."""

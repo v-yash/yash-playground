@@ -195,3 +195,74 @@ and demo nginx config of corp and trb backend
 
 "rms_admin
 }fP97xcNP2^P]*XM"
+
+
+
+"b2buser
+HSeWxPwFerPTbf9"
+
+"b2b-master-new.cwbpdp5vvep9.ap-south-1.rds.amazonaws.com 
+b2b-slave-new.cwbpdp5vvep9.ap-south-1.rds.amazonaws.com"
+
+
+CREATE SCHEMA IF NOT EXISTS ten100_schema
+    AUTHORIZATION demo_rds_admin;
+
+GRANT ALL ON SCHEMA ten100_schema TO demo_rds_admin;
+
+
+optimus_write
+RqazcZL2R2
+
+"rms-p-its-rcs-new.cwbpdp5vvep9.ap-south-1.rds.amazonaws.com
+rms-p-its-rcs-slave-new.cwbpdp5vvep9.ap-south-1.rds.amazonaws.com"
+
+
+"web_loyalty
+f1L5*5Li83b6"
+"direct-p-loyalty-master-new.cwbpdp5vvep9.ap-south-1.rds.amazonaws.com
+direct-p-loyalty-slave-new.cwbpdp5vvep9.ap-south-1.rds.amazonaws.com
+"
+
+
+"growth
+XYgs1CnY3rw0"
+"direct-p-growth-master-new.cwbpdp5vvep9.ap-south-1.rds.amazonaws.com
+direct-p-growth-slave.cwbpdp5vvep9.ap-south-1.rds.amazonaws.com"
+
+"rackrate_admin
+L3Dsd*daf23aD"
+rms-p-rackrate-service-master-new.cwbpdp5vvep9.ap-south-1.rds.amazonaws.com
+
+
+"direct-p-growth-master-new.cwbpdp5vvep9.ap-south-1.rds.amazonaws.com
+direct-p-growth-slave.cwbpdp5vvep9.ap-south-1.rds.amazonaws.com"
+
+
+
+"partner
+y+!Gt8Hm4BWPaXPZ"
+partner-portal-master-new-01.cwbpdp5vvep9.ap-south-1.rds.amazonaws.com
+
+
+
+
+
+site:
+  sitename: akhandpratapsingh-13b63fe439
+  pod_url: https://prod-uk-a.online.tableau.com
+  site_luid: 2bc74e21-1446-4a45-8df2-cd0339f5dff5
+  site_id: '228614'
+  user_email: safvan.tk1@treebo.com
+  user_domain: external
+  pool_id: 7e9b41af-d0fc-4fab-a696-c88e7a15c11f
+  pool_name: prod
+  edge_manager_id: null
+  gw_api_token: null
+tokens:
+- name: admin-pat
+  secret: ePkN5x9tRL+IIDZ2dm7Q8w==:LlgaBvNgwDX5xjcE3fFpqGAS7Ibxh3Rh
+  comment: ''
+- name: tableau-bridge
+  secret: H7pXgOEqQbuD4zUhoYBkGA==:XEuLfyPuC8Etj6bQaTw9448wBeLaCiik
+  comment: ''
