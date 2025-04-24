@@ -1,0 +1,114 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: devops-bot
+  namespace: default
+imagePullSecrets:
+  - name: aws-ecr-token-facets-config-auto
+  - name: aws-ecr-token-facetsaccount
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: devops-bot-role
+  namespace: default
+rules:
+- apiGroups: [""]
+  resources: ["pods", "pods/log", "namespaces"]
+  verbs: ["get", "list", "watch", "describe"]
+- apiGroups: ["apps"]
+  resources: ["deployments"]
+  verbs: ["get", "list", "patch"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: devops-bot-rolebinding
+  namespace: default
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: devops-bot-role
+subjects:
+- kind: ServiceAccount
+  name: devops-bot
+  namespace: default
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-bot-deployment
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-bot
+  template:
+    metadata:
+      labels:
+        app: devops-bot
+    spec:
+      serviceAccountName: devops-bot
+      containers:
+        - name: devops-bot
+          image: 864735471761.dkr.ecr.ap-southeast-1.amazonaws.com/devops-bot:staging
+          imagePullPolicy: Always
+          env:
+            - name: SLACK_BOT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: devops-bot-secrets
+                  key: slack-token
+            - name: SLACK_SIGNING_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: devops-bot-secrets
+                  key: slack-signing-secret
+            - name: VERIFICATION_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: devops-bot-secrets
+                  key: slack-verification-token
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "250m"
+              memory: "256Mi"
+      imagePullSecrets:
+        - name: aws-ecr-token-facets-config-auto
+        - name: aws-ecr-token-facetsaccount
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: devops-bot
+spec:
+  ports:
+  - name: http
+    port: 3001
+    targetPort: 8080
+  selector:
+    app: devops-bot
+  type: ClusterIP
