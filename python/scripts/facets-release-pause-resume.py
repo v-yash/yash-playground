@@ -18,7 +18,7 @@ class ClusterPauseResume:
         self.stack_name = STACK
         self.cluster_name = cluster_name
         self.environment = environment
-        self.pause_releases = pause_releases.lower() == 'true'  # Convert string to boolean
+        self.pause_releases = pause_releases.lower() == 'true'
         self.user_name = user
 
     def get_cluster_from_stack(self):
@@ -84,6 +84,10 @@ class ClusterPauseResume:
         self.send_notification(self.cluster_name, self.pause_releases, self.user_name)
 
 
+def run_pause_release(cluster_name, pause_releases, user, facets_auth_token, environment="staging"):
+        controller = ClusterPauseResume(cluster_name, environment, pause_releases, user, facets_auth_token)
+        controller.execute_pause_resume()
+
 if __name__ == '__main__':
     cluster_name = sys.argv[1]
     environment = "staging"
@@ -91,5 +95,4 @@ if __name__ == '__main__':
     user = sys.argv[3]
     facets_auth_token = sys.argv[4]
 
-    controller = ClusterPauseResume(cluster_name, environment, pause_releases, user, facets_auth_token)
-    controller.execute_pause_resume()
+    run_pause_release(cluster_name, pause_releases, user, facets_auth_token, environment)
