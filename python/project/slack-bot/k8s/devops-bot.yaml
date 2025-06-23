@@ -16,11 +16,14 @@ metadata:
   namespace: default
 rules:
 - apiGroups: [""]
-  resources: ["pods", "pods/log", "namespaces"]
-  verbs: ["get", "list", "watch", "describe"]
+  resources: ["pods", "pods/log", "pods/status", "pods/exec", "events"]
+  verbs: ["get", "list", "watch", "describe", "create"]
 - apiGroups: ["apps"]
-  resources: ["deployments"]
-  verbs: ["get", "list", "patch"]
+  resources: ["deployments", "deployments/scale", "replicasets"]
+  verbs: ["get", "list", "patch", "update", "watch"]
+- apiGroups: ["autoscaling"]
+  resources: ["horizontalpodautoscalers"]
+  verbs: ["get", "list", "watch"]
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -54,9 +57,10 @@ spec:
         app: devops-bot
     spec:
       serviceAccountName: devops-bot
+      enableServiceLinks: false
       containers:
         - name: devops-bot
-          image: 864735471761.dkr.ecr.ap-southeast-1.amazonaws.com/devops-bot:staging
+          image: ecr.aws.region.amazonaws.com/repo:latest
           imagePullPolicy: Always
           env:
             - name: SLACK_BOT_TOKEN
@@ -74,6 +78,18 @@ spec:
                 secretKeyRef:
                   name: devops-bot-secrets
                   key: slack-verification-token
+            - name: AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: devops-bot-secrets
+                  key: auth-token
+            - name: SLACK_WEBHOOK_URL
+              valueFrom:
+                secretKeyRef:
+                  name: devops-bot-secrets
+                  key: slack-webhook
+            - name: APP_ENV
+              value: "production"
           ports:
             - containerPort: 8080
           livenessProbe:
@@ -90,14 +106,14 @@ spec:
             periodSeconds: 5
           resources:
             requests:
-              cpu: "100m"
-              memory: "128Mi"
-            limits:
-              cpu: "250m"
+              cpu: "200m"
               memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
       imagePullSecrets:
-        - name: aws-ecr-token-facets-config-auto
-        - name: aws-ecr-token-facetsaccount
+        - name: aws-ecr-token
+        - name: aws-ecr-token-account
 
 ---
 apiVersion: v1

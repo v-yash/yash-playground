@@ -15,14 +15,14 @@ metadata:
   labels:
     resource_name: tools
     resource_type: ingress
-  name: tools-hotelsuperhero-devops-bot-devops-bot
+  name: tools-devops-bot
   namespace: default
   resourceVersion: "579192318"
-  uid: e7086f32-88f5-45a1-b179-224e48dba6dc
+  uid: uid
 spec:
   ingressClassName: tools
   rules:
-  - host: devops-bot.hotelsuperhero.be
+  - host: host
     http:
       paths:
       - backend:
@@ -35,4 +35,4 @@ spec:
 status:
   loadBalancer:
     ingress:
-    - hostname: k8s-default-toolsing-4abd45d6dd-950b3f7ba959a4b4.elb.ap-southeast-1.amazonaws.com
+    - hostname: elb_host

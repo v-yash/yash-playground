@@ -1,4 +1,8 @@
 {
-    "allowed_users": ["U0251RME9H9", "U1S2NGKUJ", "U088BG261K4", "U02CTQ381G8"]
-  }
-  
+  "allowed_users": [
+    "emails"
+  ],
+  "admin_users": [
+    "emails"
+  ]
+}
