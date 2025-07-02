@@ -1,0 +1,14 @@
+# filename: your-app-sleep-schedule.yaml
+
+apiVersion: snorlax.moonbeam.nyc/v1beta1
+kind: SleepSchedule
+metadata:
+  namespace: default
+  name: dummy
+spec:
+  wakeTime: '8:00am'
+  sleepTime: '10:00am'
+  deployments:
+  - name: devops-webapp
+
+  timezone: 'Asia/Kolkata'
