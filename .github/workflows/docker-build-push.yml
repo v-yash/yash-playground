@@ -30,7 +30,7 @@ jobs:
         run: |
           SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
           BRANCH_NAME=$(echo "${{ github.ref_name }}" | sed 's/[^a-zA-Z0-9-]//g')
-          IMAGE_TAG="$BRANCH_NAME-$SHORT_SHA-devops-learning"
+          IMAGE_TAG="$BRANCH_NAME-$SHORT_SHA-yash-playground"
           echo "SHORT_SHA=$SHORT_SHA" >> $GITHUB_ENV
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
           echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
