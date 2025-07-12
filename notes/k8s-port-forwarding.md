@@ -47,7 +47,7 @@ Your **app is running inside a pod**, but you can't directly access the pod from
 
 ### **🛠 Components in Your Case**
 1️⃣ **Pod** (`devops-webapp-566b5997dc-pcb62`)  
-   - Runs the actual container (`starkyv/devops-learning:latest`)  
+   - Runs the actual container (`starkyv/yash-playground:latest`)  
    - Listens **inside the pod** on port `5000`  
 
 2️⃣ **Service** (`devops-webapp-service`)  

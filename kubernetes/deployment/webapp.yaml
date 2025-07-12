@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: webapp
-          image: starkyv/devops-learning:latest
+          image: starkyv/yash-playground:latest
           ports:
             - containerPort: 5000
           resources:
