@@ -43,6 +43,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: |
-            docker.io/yvdocker7/yash-playground:${{ env.IMAGE_TAG }}
-            docker.io/yvdocker7/yash-playground:latest
+          tags:
+            - docker.io/yvdocker7/yash-playground:${{ env.IMAGE_TAG }}
+            - docker.io/yvdocker7/yash-playground:latest
